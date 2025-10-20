@@ -41,7 +41,7 @@ clock = pygame.time.Clock()
 class GameObject:
     """Базовый класс для игровых объектов."""
 
-    def __init__(self, position=None):  # ИСПРАВЛЕНО: должно быть __init__
+    def __init__(self, position=None):
         """
         Инициализирует игровой объект.
 
@@ -53,7 +53,7 @@ class GameObject:
             self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
         else:
             self.position = position
-        self.body_color = None  # ДОБАВЛЕНО: инициализация body_color
+        self.body_color = None
 
     def draw(self):
         """Абстрактный метод для отрисовки объекта."""
@@ -63,10 +63,10 @@ class GameObject:
 class Apple(GameObject):
     """Класс для представления яблока в игре."""
 
-    def __init__(self):  # ИСПРАВЛЕНО: должно быть __init__
+    def __init__(self):
         """Инициализирует яблоко со случайной позицией и красным цветом."""
-        super().__init__()  # ИСПРАВЛЕНО: правильный вызов super()
-        self.body_color = APPLE_COLOR  # ДОБАВЛЕНО: установка цвета
+        super().__init__()
+        self.body_color = APPLE_COLOR
         self.randomize_position()
 
     def randomize_position(self):
@@ -85,18 +85,18 @@ class Apple(GameObject):
 class Snake(GameObject):
     """Класс для представления змейки в игре."""
 
-    def __init__(self):  # ИСПРАВЛЕНО: должно быть __init__
+    def __init__(self):
         """Инициализирует змейку с начальными параметрами."""
-        super().__init__()  # ИСПРАВЛЕНО: правильный вызов super()
-        self.body_color = SNAKE_COLOR  # ДОБАВЛЕНО: установка цвета
+        super().__init__()
+        self.body_color = SNAKE_COLOR
         self.reset()
 
     def reset(self):
         """Сбрасывает змейку в начальное состояние."""
         self.length = 1
-        self.positions = [self.position]  # ДОБАВЛЕНО: инициализация positions
-        self.direction = RIGHT  # ДОБАВЛЕНО: установка направления
-        self.next_direction = None  # ДОБАВЛЕНО: инициализация next_direction
+        self.positions = [self.position]
+        self.direction = RIGHT
+        self.next_direction = None
         self.last = None
 
     def update_direction(self):
@@ -133,7 +133,7 @@ class Snake(GameObject):
         if len(self.positions) > self.length:
             self.positions.pop()
 
-    def draw(self):  # ИСПРАВЛЕНО: убрал лишний отступ, это метод класса
+    def draw(self):
         """Отрисовывает змейку на экране, затирая след."""
         for position in self.positions[:-1]:
             rect = (pygame.Rect(position, (GRID_SIZE, GRID_SIZE)))
@@ -211,5 +211,5 @@ def main():
         pygame.display.update()
 
 
-if __name__ == '__main__':  # ИСПРАВЛЕНО: должно быть __name__
+if __name__ == '__main__':
     main()
